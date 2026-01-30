@@ -11,11 +11,13 @@ public class CardService {
 
     //TODO: 2.1.1
     // create a private final field for CardRepository (dependency)
-
+    private final CardRepository cardRepository;
 
     //TODO: 2.1.2
     // create a constructor to inject CardRepository
-
+    public CardService(CardRepository cardRepository){
+        this.cardRepository = cardRepository;
+    }
 
     //TODO: 2.1.3
     // -----------------------------------------
@@ -23,14 +25,15 @@ public class CardService {
     // -----------------------------------------
     // After completion of this method, you can test with swagger UI and using unit tests
     public Card createCard(Card card) {
-
         // STEP 1: Check if card number already exists
-        // to ensure uniqueness of card numbers in the system
-        // throw runtime exception if it exists "Card number already exists"
+        if (cardRepository.existsByCardNumber(card.getCardNumber())) {
+            throw new RuntimeException("Card number already exists");
+        }
 
         // STEP 2: Save and return the card
-        return null;
+        return cardRepository.save(card);
     }
+
 
     //TODO: 2.1.4
     // -----------------------------------------
@@ -40,6 +43,7 @@ public class CardService {
     public Card getCardById(Long id) {
 
         // STEP 1: Fetch card by ID
+
         // throw runtime exception if not found "Card not found with id: " + id
         return null;
     }

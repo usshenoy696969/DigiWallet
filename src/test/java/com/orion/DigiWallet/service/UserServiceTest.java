@@ -118,16 +118,18 @@ class UserServiceTest {
         // Use assertions to verify the correctness of the returned greeting messages
 
         //remove @Disabled after implementing write test actual method
-        @Disabled
+        //@Disabled
         @Test
         void shouldReturnAdminGreeting_whenRoleIsAdmin() {
-
+            String greeting = userService.generateGreetingMsg("Admin");
+            assertEquals("Admin access enabled", greeting);
         }
 
         @Disabled
         @Test
         void shouldReturnUserGreeting_whenRoleIsNotAdmin() {
-
+            String greeting = userService.generateGreetingMsg("NOT ADMIN");
+            assertEquals("User access", greeting);
         }
 
         @Disabled

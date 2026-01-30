@@ -19,6 +19,7 @@ public interface CardRepository extends JpaRepository<Card, Long> {
     // Example return type: Optional<Card>
     Optional<Card> findByCardNumber(String cardNumber);
 
+
     // TODO: 3.2
     // Write a method to check if a card exists by cardNumber
     boolean existsByCardNumber(String cardNumber);
